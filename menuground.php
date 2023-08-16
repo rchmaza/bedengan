@@ -7,8 +7,6 @@ if ( !isset($_SESSION["log"])) {
   header("Location: logout.php");
   exit;
 }
-require 'fungsi.php';
-// require 'fungsi.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -76,11 +74,10 @@ require 'fungsi.php';
                    
                     
                     <div class="button" >
-                        <form action="" method="post">
                             <div class="inputwrapper">
                                 <input class="quantity" min="1" name="quantity" value="1" type="number" style="width: 50px;" class="form-control-inline" required/>
                                 <span>(Hari)</span>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalLongA">ADD</button>
+                                <button type="button" class="add-button btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalLongA">ADD</button>
                                 <div class="modal fade" id="exampleModalLongA" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -92,7 +89,6 @@ require 'fungsi.php';
                             </div>
                               </div>
                             
-                        </form>
                     </div>
                     <div class="add">
                     </div>
@@ -161,14 +157,12 @@ require 'fungsi.php';
                
                 
                 <div class="button" >
-					<form action="" method="post">
 						<div class="inputwrapper">
                             <input class="quantity" min="0" name="quantity" value="1" type="number" style="width: 50px;" class="form-control-inline" required/>
                             <span>(Hari)</span>
-                            <button href="#" class="btn btn-danger btn-sm" >ADD</button>
+                            <button href="#" class="add-button btn btn-danger btn-sm" >ADD</button>
                         </div>
 						
-					</form>
                 </div>
                 <div class="add">
                 </div>
@@ -209,14 +203,12 @@ require 'fungsi.php';
                
                 
                 <div class="button" >
-					<form action="" method="post">
 						<div class="inputwrapper">
                             <input class="quantity" min="0" name="quantity" value="1" type="number" style="width: 50px;" class="form-control-inline" required/>
                             <span>(Hari)</span>
-                            <button href="#" class="btn btn-danger btn-sm" >ADD</button>
+                            <button href="#" class="add-button btn btn-danger btn-sm" >ADD</button>
                         </div>
 						
-					</form>
                 </div>
                 <div class="add">
                 </div>
@@ -259,14 +251,12 @@ require 'fungsi.php';
                
                 
                 <div class="button" >
-					<form action="" method="post">
 						<div class="inputwrapper">
                             <input class="quantity" min="0" name="quantity" value="1" type="number" style="width: 50px;" class="form-control-inline" required/>
                             <span>(Hari)</span>
-                            <button href="#" class="btn btn-danger btn-sm" >ADD</button>
+                            <button href="#" class="add-button btn btn-danger btn-sm" >ADD</button>
                         </div>
 						
-					</form>
                 </div>
                 <div class="add">
                 </div>
@@ -309,14 +299,12 @@ require 'fungsi.php';
                    
                     
                     <div class="button" >
-                        <form action="" method="post">
                             <div class="inputwrapper">
                                 <input class="quantity" min="0" name="quantity" value="1" type="number" style="width: 50px;" class="form-control-inline" required/>
                                 <span>(Hari)</span>
-                                <button href="#" class="btn btn-danger btn-sm" >ADD</button>
+                                <button href="#" class="add-button btn btn-danger btn-sm" >ADD</button>
                             </div>
                             
-                        </form>
                     </div>
                     <div class="add">
                     </div>
@@ -357,14 +345,12 @@ require 'fungsi.php';
                    
                     
                     <div class="button" >
-                        <form action="" method="post">
                             <div class="inputwrapper">
                                 <input class="quantity" min="0" name="quantity" value="1" type="number" style="width: 50px;" class="form-control-inline" required/>
                                 <span>(Hari)</span>
-                                <button href="#" class="btn btn-danger btn-sm" >ADD</button>
+                                <button href="#" class="add-button btn btn-danger btn-sm" >ADD</button>
                             </div>
                             
-                        </form>
                     </div>
                     <div class="add">
                     </div>
@@ -405,14 +391,12 @@ require 'fungsi.php';
                    
                     
                     <div class="button" >
-                        <form action="" method="post">
                             <div class="inputwrapper">
                                 <input class="quantity" min="0" name="quantity" value="1" type="number" style="width: 50px;" class="form-control-inline" required/>
                                 <span>(Hari)</span>
-                                <button href="#" class="btn btn-danger btn-sm" >ADD</button>
+                                <button href="#" class="add-button btn btn-danger btn-sm" >ADD</button>
                             </div>
                             
-                        </form>
                     </div>
                     <div class="add">
                     </div>
@@ -453,14 +437,12 @@ require 'fungsi.php';
                    
                     
                     <div class="button" >
-                        <form action="" method="post">
                             <div class="inputwrapper">
                                 <input class="quantity" min="0" name="quantity" value="1" type="number" style="width: 50px;" class="form-control-inline" required/>
                                 <span>(Hari)</span>
-                                <button href="#" class="btn btn-danger btn-sm" >ADD</button>
+                                <button href="#" class="add-button btn btn-danger btn-sm" >ADD</button>
                             </div>
                             
-                        </form>
                     </div>
                     <div class="add">
                     </div>
@@ -502,14 +484,12 @@ require 'fungsi.php';
                    
                     
                     <div class="button" >
-                        <form action="" method="post">
                             <div class="inputwrapper">
                                 <input class="quantity" min="0" name="quantity" value="1" type="number" style="width: 50px;" class="form-control-inline" required/>
                                 <span>(Hari)</span>
-                                <button href="#" class="btn btn-danger btn-sm" >ADD</button>
+                                <button href="#" class="add-button btn btn-danger btn-sm" >ADD</button>
                             </div>
                             
-                        </form>
                     </div>
                     <div class="add">
                     </div>
@@ -550,14 +530,12 @@ require 'fungsi.php';
                    
                     
                     <div class="button" >
-                        <form action="" method="post">
                             <div class="inputwrapper">
                                 <input class="quantity" min="0" name="quantity" value="1" type="number" style="width: 50px;" class="form-control-inline" required/>
                                 <span>(Hari)</span>
-                                <button href="#" class="btn btn-danger btn-sm" >ADD</button>
+                                <button href="#" class="add-button btn btn-danger btn-sm" >ADD</button>
                             </div>
                             
-                        </form>
                     </div>
                     <div class="add">
                     </div>
@@ -598,14 +576,12 @@ require 'fungsi.php';
                    
                     
                     <div class="button" >
-                        <form action="" method="post">
                             <div class="inputwrapper">
                                 <input class="quantity" min="0" name="quantity" value="1" type="number" style="width: 50px;" class="form-control-inline" required/>
                                 <span>(Hari)</span>
-                                <button href="#" class="btn btn-danger btn-sm" >ADD</button>
+                                <button href="#" class="add-button btn btn-danger btn-sm" >ADD</button>
                             </div>
                             
-                        </form>
                     </div>
                     <div class="add">
                     </div>
@@ -646,14 +622,12 @@ require 'fungsi.php';
                    
                     
                     <div class="button" >
-                        <form action="" method="post">
                             <div class="inputwrapper">
                                 <input class="quantity" min="0" name="quantity" value="1" type="number" style="width: 50px;" class="form-control-inline" required/>
                                 <span>(Hari)</span>
-                                <button href="#" class="btn btn-danger btn-sm" >ADD</button>
+                                <button href="#" class="add-button btn btn-danger btn-sm" >ADD</button>
                             </div>
                             
-                        </form>
                     </div>
                     <div class="add">
                     </div>
@@ -695,16 +669,15 @@ require 'fungsi.php';
                    
                     
                     <div class="button" >
-                        <form action="" method="post">
+
                             <div class="inputwrapper">
                                 <input class="quantity" min="0" name="quantity" value="1" type="number" style="width: 50px;" class="form-control-inline" required/>
                                 <span>(Hari)</span>
                                 
-                                <button href="#" class="btn btn-danger btn-sm" >ADD</button>
+                                <button class="add-button btn btn-danger btn-sm" >ADD</button>
 
                             </div>
                             
-                        </form>
                     </div>
                     <div class="add">
                     </div>
@@ -765,7 +738,19 @@ require 'fungsi.php';
   <!-- Akhir Footer -->
 
 
+  <!-- Start Modal Validasi Add Cart -->
+  <div class="modal fade" id="errorAddModal" tabindex="-1" aria-labelledby="errorAddModal" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
 
+              <div class="modal-body">
+                  ISI JUMLAH ITEM TERLEBIH DAHULU & TIDAK BOLEH BERJUMLAH 0 <a class="cek">&#9989;</a>
+              </div>
+
+          </div>
+      </div>
+  </div>
+  <!-- End Modal Validasi Add Cart -->
 
 
     <!-- Optional JavaScript -->
@@ -776,5 +761,26 @@ require 'fungsi.php';
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.js"></script>
     <script src="slide.js"></script>
+
+  <script type="text/javascript">
+      const buttons_add = document.querySelectorAll('.add-button');
+
+      // Loop through each button and add a click event listener
+      buttons_add.forEach(function(button) {
+          button.addEventListener('click', function() {
+              validateInput(this); // Pass the clicked button element to the function
+          });
+      });
+
+      function validateInput(button) {
+          var inputField = button.parentNode.querySelector('.quantity');
+          var inputValue = parseInt(inputField.value);
+
+          if (isNaN(inputValue) || inputValue <= 0) {
+              var modal = new bootstrap.Modal(document.getElementById('errorAddModal'));
+              modal.show();
+          }
+      }
+  </script>
   </body>
 </html>
