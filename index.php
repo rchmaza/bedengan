@@ -1,3 +1,8 @@
+<?php
+require_once 'backend/connection.php';
+require_once 'backend/session.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,10 +61,10 @@ https://templatemo.com/tm-580-woox-travel
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="index.php" class="active">Home</a></li>
                         <li><a href="about.html">Ground</a></li>
                         <li><a href="about.html">Cart</a></li>
-                        <li><a href="about.html">Log Out</a></li>
+                        <li><a href="backend/logout.php">Log Out</a></li>
                         
                         
                     </ul>   
