@@ -116,8 +116,8 @@ https://templatemo.com/tm-580-woox-travel
                     </div>
 
                   </div>
-                  <div class="main-button" style="margin-top: 20px;">
-                    <a href="reservation.html">Add</a>
+                  <div class="main-button" style="margin-top: 20px;" >
+                    <a href="#" class="link-add-script">Add</a>
                   </div>
                   <div class="main-button">
                     <a href="reservation.html">Lihat</a>
@@ -507,7 +507,23 @@ https://templatemo.com/tm-580-woox-travel
     </div>
   </div>
 
-  
+  <!-- Modal -->
+  <div class="modal fade" id="errorAddModal" tabindex="-1" aria-labelledby="errorAddModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="errorAddModalLabel">Modal Title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer>
     <div class="container">
@@ -537,6 +553,24 @@ https://templatemo.com/tm-580-woox-travel
     $(".option").click(function(){
       $(".option").removeClass("active");
       $(this).addClass("active"); 
+    });
+
+    $(document).ready(function() {
+      $('#errorAddModal').on('show.bs.modal', function(event) {
+        const button = $(event.relatedTarget); // Button that triggered the modal
+        const item = button.data('item'); // Get the item from the button's data attribute
+        const modal = $(this); // The modal element
+
+        //modal.find('.modal-title').text(`Modal for ${item}`);
+        //modal.find('.modal-body').html(`This is the content for ${item}.`);
+      });
+
+      // Attach click event to item links
+      $('.link-add-script').on('click', function(e) {
+        e.preventDefault(); // Prevent the default link behavior
+        const modal = $('#errorAddModal');
+        modal.modal('show'); // Show the modal
+      });
     });
   </script>
 
