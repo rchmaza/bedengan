@@ -133,7 +133,7 @@ https://templatemo.com/tm-580-woox-travel
                     <td>20/08/2023</td>
                     <td>Active</td>
                     <td>300.000</td>
-                    <td>Detail</td>
+                    <td><a href="" class="link-detail-script" >Detail</a></td>
                     
                     
                   </tr>
@@ -142,7 +142,7 @@ https://templatemo.com/tm-580-woox-travel
                     <td>20/08/2023</td>
                     <td>Active</td>
                     <td>300.000</td>
-                    <td>Detail</td>
+                    <td><a href="" class="link-detail-script" >Detail</a></td>
                   </tr>
 
                   <tr>
@@ -157,6 +157,24 @@ https://templatemo.com/tm-580-woox-travel
              
             </div>
           </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="detailModalLabel">Modal Title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -190,6 +208,24 @@ https://templatemo.com/tm-580-woox-travel
     $(".option").click(function(){
       $(".option").removeClass("active");
       $(this).addClass("active"); 
+    });
+
+    $(document).ready(function() {
+      $('#detailModal').on('show.bs.modal', function(event) {
+        const button = $(event.relatedTarget); // Button that triggered the modal
+        const item = button.data('item'); // Get the item from the button's data attribute
+        const modal = $(this); // The modal element
+
+        //modal.find('.modal-title').text(`Modal for ${item}`);
+        //modal.find('.modal-body').html(`This is the content for ${item}.`);
+      });
+
+      // Attach click event to item links
+      $('.link-detail-script').on('click', function(e) {
+        e.preventDefault(); // Prevent the default link behavior
+        const modal = $('#detailModal');
+        modal.modal('show'); // Show the modal
+      });
     });
   </script>
 
