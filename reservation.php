@@ -166,7 +166,7 @@ https://templatemo.com/tm-580-woox-travel
               </table>
               <div class="col-lg-12 d-flex justify-content-center">            
                   <div class="main-button">
-                    <a href="history.html">Sewa sekarang</a>
+                    <a href="history.php">Sewa sekarang</a>
                   </div> 
               </div>
             </div>
