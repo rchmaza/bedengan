@@ -182,37 +182,9 @@ https://templatemo.com/tm-580-woox-travel
                     <th scope="col">Hari</th> 
                     <th scope="col">Tgl Sewa</th>
                     <th scope="col">Tgl Berakhir</th>
-                    
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Ground A</td>
-                    <td>150.000</td>
-                    <td>2</td>
-                    <td>20/08/2023</td>
-                    <td>21/08/2023</td>
-                    
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Ground B</td>
-                    <td>150.000</td>
-                    <td>4</td>
-                    <td>20/08/2023</td>
-                    <td>23/08/2023</td>
-                    
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Ground C</td>
-                    <td>150.000</td>
-                    <td>3</td>
-                    <td>20/08/2023</td>
-                    <td>22/08/2023</td>
-                    
-                  </tr>
                 </tbody>
               </table>
         </div>

@@ -1,3 +1,10 @@
+<?php
+require_once 'backend/session.php';
+require_once 'backend/connection.php';
+include 'backend/pemesanan.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -116,41 +123,19 @@ https://templatemo.com/tm-580-woox-travel
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Dheni</td>
-                    <td>20/08/2023</td>
-                    <td>Active</td>
-                    <td>300.000</td>
-                    <td><a href="" class="link-detail-script" >Detail</a></td>
-                    <td>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Dropdown</option>
-                            <option value="1">Aktif</option>
-                            <option value="2">Tidak aktif</option>
-                            <option value="3">Batal</option>
-                            <option value="3">Selesai</option>
-                          </select>
-                    </td>
-                    
-                  </tr>
-                  <!--<tr>
-                    <th scope="row">2</th>
-                    <td>Dheni</td>
-                    <td>20/08/2023</td>
-                    <td>Active</td>
-                    <td>300.000</td>
-                    <td><a href="" class="link-detail-script" >Detail</a></td>
-                  </tr>
+                <?php $i = 1; if (isset($result_data)) {
+                foreach ($result_data as $item) {?>
+                    <tr>
+                        <th scope="row"><?= $i ?></th>
+                        <td><?= $item['user_name'] ?></td>
+                        <td><?= $item['order_date'] ?></td>
+                        <td><?= $item['status'] ?></td>
+                        <td><?= $item['total'] ?></td>
+                        <td><a href="" class="link-detail" data-order_id="<?= $item['order_id'] ?>">Detail</a></td>
+                        <td><a href="" class="link-manage" data-order_id="<?= $item['order_id'] ?>" >Manage</a></td>
 
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Dheni</td>
-                     <td>20/08/2023</td>
-                    <td>Active</td>
-                    <td>300.000</td>
-                    <td><a href="" class="link-detail-script" >Detail</a></td>
-                  </tr>-->
+                    </tr>
+                    <?php $i++;}} ?>
                 </tbody>
               </table>
              
@@ -170,54 +155,58 @@ https://templatemo.com/tm-580-woox-travel
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <table class="table">
+            <table class="table" id="detail_table">
                 <thead>
-                  <tr>
+                <tr>
                     <th scope="col">No</th>
                     <th scope="col">Ground</th>
                     <th scope="col">Harga</th>
-                    <th scope="col">Hari</th> 
+                    <th scope="col">Hari</th>
                     <th scope="col">Tgl Sewa</th>
                     <th scope="col">Tgl Berakhir</th>
-                    
-                  </tr>
+                </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Ground A</td>
-                    <td>150.000</td>
-                    <td>2</td>
-                    <td>20/08/2023</td>
-                    <td>21/08/2023</td>
-                    
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Ground B</td>
-                    <td>150.000</td>
-                    <td>4</td>
-                    <td>20/08/2023</td>
-                    <td>23/08/2023</td>
-                    
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Ground C</td>
-                    <td>150.000</td>
-                    <td>3</td>
-                    <td>20/08/2023</td>
-                    <td>22/08/2023</td>
-                    
-                  </tr>
                 </tbody>
-              </table>
+            </table>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="manageModal" tabindex="-1" aria-labelledby="manageModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <form method="post">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="manageModalLabel">Rubah Status Pemesanan</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <div class="row">
+                      <div class="col-12">
+                          <select class="form-select" aria-label="Default select example" name="status">
+                              <option value="inactive">Tidak aktif</option>
+                              <option value="active">Aktif</option>
+                              <option value="done">Selesai</option>
+                              <option value="cancel">Batal</option>
+                          </select>
+                          <input type="hidden" name="order_id" value="" class="script-id">
+                      </div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="submit" name="update_status" class="btn btn-primary" data-bs-dismiss="modal">Simpan</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+              </form>
+          </div>
+      </div>
   </div>
 
   <footer>
@@ -251,6 +240,15 @@ https://templatemo.com/tm-580-woox-travel
     });
 
     $(document).ready(function() {
+        $('.link-manage').on('click', function(e) {
+            e.preventDefault(); // Prevent the default link behavior
+            const order_id = $(this).data('order_id');
+            const manageModal = $('#manageModal');
+            manageModal.find('.script-id').val(order_id);
+            manageModal.modal("show");
+        });
+
+
       $('#detailModal').on('show.bs.modal', function(event) {
         const button = $(event.relatedTarget); // Button that triggered the modal
         const item = button.data('item'); // Get the item from the button's data attribute
@@ -261,12 +259,48 @@ https://templatemo.com/tm-580-woox-travel
       });
 
       // Attach click event to item links
-      $('.link-detail-script').on('click', function(e) {
+      $('.link-detail').on('click', function(e) {
         e.preventDefault(); // Prevent the default link behavior
-        const modal = $('#detailModal');
-        modal.modal('show'); // Show the modal
+          const order_id = $(this).data('order_id');
+          const modalDetail = $('#detailModal');
+
+          $.ajax({
+              type: "GET",
+              url: "backend/order-detail.php",
+              data: {
+                  order_id: order_id,
+              },
+              success: function (response) {
+                  if (!response.success) {
+                      alert("Gagal");
+                  }
+
+                  populateTable(response.data)
+                  modalDetail.modal("show");
+              }
+          });
       });
     });
+
+    function populateTable(data) {
+        let tableBody = $('#detail_table tbody');
+        tableBody.empty(); // Clear existing table rows
+
+        let i = 1;
+
+        data.forEach(function(detail) {
+            let newRow = $('<tr>');
+            newRow.append('<td>' + i + '</td>');
+            newRow.append('<td>' + detail.name + '</td>');
+            newRow.append('<td>' + detail.price + '</td>');
+            newRow.append('<td>' + detail.day + '</td>');
+            newRow.append('<td>' + detail.start_date + '</td>');
+            newRow.append('<td>' + detail.end_date + '</td>');
+
+            tableBody.append(newRow);
+            i++;
+        });
+    }
   </script>
 
   </body>
