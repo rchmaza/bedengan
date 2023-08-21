@@ -166,7 +166,7 @@ https://templatemo.com/tm-580-woox-travel
               </table>
               <div class="col-lg-12 d-flex justify-content-center">            
                   <div class="main-button">
-                    <a href="history.php">Sewa sekarang</a>
+                    <a href="backend/order.php?total=<?= $totalAmount ?>">Sewa sekarang</a>
                   </div> 
               </div>
             </div>

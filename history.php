@@ -1,3 +1,10 @@
+<?php
+require_once 'backend/session.php';
+require_once 'backend/connection.php';
+include 'backend/history.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -128,30 +135,25 @@ https://templatemo.com/tm-580-woox-travel
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>20/08/2023</td>
-                    <td>Active</td>
-                    <td>300.000</td>
-                    <td><a href="" class="link-detail-script" >Detail</a></td>
-                    
-                    
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>20/08/2023</td>
-                    <td>Active</td>
-                    <td>300.000</td>
-                    <td><a href="" class="link-detail-script" >Detail</a></td>
-                  </tr>
-
-                  <tr>
-                    <th scope="row">3</th>
-                     <td>20/08/2023</td>
-                    <td>Active</td>
-                    <td>300.000</td>
-                    <td><a href="" class="link-detail-script" >Detail</a></td>
-                  </tr>
+                <?php $i = 1; if (isset($history_data)) {
+                    foreach ($history_data as $item) {?>
+                        <tr>
+                            <th scope="row"><?= $i ?></th>
+                            <td><?= $item['order_date'] ?></td>
+                            <td><?php
+                                $status_alias = match ($item['status']) {
+                                    'inactive' => 'Belum Aktif',
+                                    'active' => 'Aktif',
+                                    'cancel' => 'Ditolak',
+                                    'done' => 'Selesai',
+                                };
+                                echo $status_alias;
+                                ?>
+                            </td>
+                            <td><?= $item['total'] ?></td>
+                            <td><a href="" class="link-detail-script" data-order_id="<?= $item['order_id'] ?>" >Detail</a></td>
+                        </tr>
+                    <?php $i++;}} ?>
                 </tbody>
               </table>
              
@@ -171,7 +173,7 @@ https://templatemo.com/tm-580-woox-travel
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <table class="table">
+            <table class="table" id="detail_table">
                 <thead>
                   <tr>
                     <th scope="col">No</th>
@@ -264,10 +266,46 @@ https://templatemo.com/tm-580-woox-travel
       // Attach click event to item links
       $('.link-detail-script').on('click', function(e) {
         e.preventDefault(); // Prevent the default link behavior
-        const modal = $('#detailModal');
-        modal.modal('show'); // Show the modal
+          const order_id = $(this).data('order_id');
+        const modalDetail = $('#detailModal');
+
+          $.ajax({
+              type: "GET",
+              url: "backend/order-detail.php",
+              data: {
+                  order_id: order_id,
+              },
+              success: function (response) {
+                  if (!response.success) {
+                      alert("Gagal");
+                  }
+
+                  populateTable(response.data)
+                  modalDetail.modal("show");
+              }
+          });
       });
     });
+
+    function populateTable(data) {
+        let tableBody = $('#detail_table tbody');
+        tableBody.empty(); // Clear existing table rows
+
+        let i = 1;
+
+        data.forEach(function(detail) {
+            let newRow = $('<tr>');
+            newRow.append('<td>' + i + '</td>');
+            newRow.append('<td>' + detail.name + '</td>');
+            newRow.append('<td>' + detail.price + '</td>');
+            newRow.append('<td>' + detail.day + '</td>');
+            newRow.append('<td>' + detail.start_date + '</td>');
+            newRow.append('<td>' + detail.end_date + '</td>');
+
+            tableBody.append(newRow);
+            i++;
+        });
+    }
   </script>
 
   </body>
