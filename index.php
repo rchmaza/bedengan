@@ -92,7 +92,7 @@ https://templatemo.com/tm-580-woox-travel
             <div class="main-caption">
               <h2>Taman Wisata Bedengan:</h2>
               <h1>Petualangan Alam Terbuka</h1>
-                <div class="border-button"><a href="about.html"><?= $is_admin ?  'Pemesanan' : 'Sewa Ground Camping' ?></a></div>
+                <div class="border-button"><a href="pemesanan.php"><?= $is_admin ?  'Pemesanan' : 'Sewa Ground Camping' ?></a></div>
             </div>
             
           </div>
@@ -102,7 +102,7 @@ https://templatemo.com/tm-580-woox-travel
             <div class="main-caption">
               <h2>Taman Wisata Bedengan:</h2>
               <h1>Liburan Seru Dengan Alam</h1>
-                <div class="border-button"><a href="about.html"><?= $is_admin ?  'Pemesanan' : 'Sewa Ground Camping' ?></a></div>
+                <div class="border-button"><a href="pemesanan.php"><?= $is_admin ?  'Pemesanan' : 'Sewa Ground Camping' ?></a></div>
             </div>
             
           </div>
@@ -112,7 +112,7 @@ https://templatemo.com/tm-580-woox-travel
             <div class="main-caption">
               <h2>Taman Wisata Bedengan:</h2>
               <h1>Jelajahi Keindahan Bersama Kami</h1>
-                <div class="border-button"><a href="about.html"><?= $is_admin ?  'Pemesanan' : 'Sewa Ground Camping' ?></a></div>
+                <div class="border-button"><a href="pemesanan.php"><?= $is_admin ?  'Pemesanan' : 'Sewa Ground Camping' ?></a></div>
             </div>
             
           </div>
@@ -122,7 +122,7 @@ https://templatemo.com/tm-580-woox-travel
             <div class="main-caption">
               <h2>Taman Wisata Bedengan:</h2>
               <h1>Eksplorasi Dengan Ground Camping</h1>
-                <div class="border-button"><a href="about.html"><?= $is_admin ?  'Pemesanan' : 'Sewa Ground Camping' ?></a></div>
+                <div class="border-button"><a href="pemesanan.php"><?= $is_admin ?  'Pemesanan' : 'Sewa Ground Camping' ?></a></div>
             </div>
             
           </div>
