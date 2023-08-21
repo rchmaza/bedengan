@@ -130,7 +130,7 @@ https://templatemo.com/tm-580-woox-travel
                                       <a href="#" class="link-add-script" data-ground_id="<?= $item['ground_id'] ?>">Add</a>
                                   </div>
                                   <div class="main-button">
-                                      <a href="#" class="link-detail-script" data-item="Item 2">Lihat</a>
+                                      <a href="#" class="link-detail-script" data-ground_id="<?= $item['ground_id'] ?>">Lihat</a>
                                   </div>
                               </div>
                           </div>
@@ -234,20 +234,28 @@ https://templatemo.com/tm-580-woox-travel
     });
 
     $(document).ready(function() {
-      $('#detailModal').on('show.bs.modal', function(event) {
-        const button = $(event.relatedTarget); // Button that triggered the modal
-        const item = button.data('item'); // Get the item from the button's data attribute
-        const modal = $(this); // The modal element
-
-        modal.find('.modal-title').text(`Modal for ${item}`);
-        //modal.find('.modal-body').html(`This is the content for ${item}.`);
-      });
 
       // Attach click event to item links
       $('.link-detail-script').on('click', function(e) {
         e.preventDefault(); // Prevent the default link behavior
-        const modal = $('#detailModal');
-        modal.modal('show'); // Show the modal
+          const ground_id = $(this).data('ground_id');
+          const modalDetail = $('#detailModal');
+
+          $.ajax({
+              type: "GET",
+              url: "backend/ground-detail.php",
+              data: {
+                  ground_id: ground_id,
+              },
+              success: function (response) {
+                  if (!response.success) {
+                      alert("Gagal");
+                  }
+
+                  populateModalDetail(response.data)
+                  modalDetail.modal('show'); // Show the modal
+              }
+          });
       });
 
         $('.link-add-script').on('click', function(e) {
@@ -278,6 +286,33 @@ https://templatemo.com/tm-580-woox-travel
             });
         });
     });
+
+    function populateModalDetail(data) {
+        let carouselIndicator = $('.carousel-indicators');
+        carouselIndicator.empty(); // Clear existing table rows
+
+        let carouselImage = $('.carousel-inner');
+        carouselImage.empty();
+
+        let i = 0;
+
+        data.forEach(function(detail) {
+            let indicator;
+            let image;
+            if (i === 0){
+                indicator = $(`<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${i}" class="active" aria-current="true" aria-label="Slide ${i}"></button>`);
+                image = $('<div class="carousel-item active"> <img src="images/Lahan/'+detail.filename+'" class="d-block w-100" alt="..."> </div>')
+            }else {
+                indicator = $(`<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${i}" aria-label="Slide ${i}"></button>`);
+                image = $('<div class="carousel-item"> <img src="images/Lahan/'+detail.filename+'" class="d-block w-100" alt="..."> </div>')
+            }
+            //newRow.append('<td>' + i + '</td>');
+            carouselIndicator.append(indicator);
+            carouselImage.append(image);
+            i++;
+        });
+    }
+
   </script>
 
   </body>
