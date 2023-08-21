@@ -16,7 +16,7 @@ echo $last_inserted_id;
 $sql_order_detail = "
     INSERT INTO order_detail (name, day, price, start_date, end_date, ground_id, order_id)
 SELECT
-    CONCAT('Booking from cart ', c.id) AS name,
+    g.name AS name,
     c.day,
     g.price AS price,
     c.start_date,
