@@ -1,3 +1,10 @@
+<?php
+require_once 'backend/session.php';
+require_once 'backend/connection.php';
+include 'backend/cart.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,8 +63,8 @@ https://templatemo.com/tm-580-woox-travel
                     <ul class="nav">
                         <li><a href="index.php">Home</a></li>
                         <li><a href="about.html">Ground</a></li>
-                        <li><a href="reservation.html" class="active">Cart</a></li>
-                        <li><a href="reservation.html">Log Out</a></li>
+                        <li><a href="reservation.php" class="active">Cart</a></li>
+                        <li><a href="backend/logout.php">Log Out</a></li>
                     </ul>   
                     <a class='menu-trigger'>
                         <span>Menu</span>
@@ -139,37 +146,22 @@ https://templatemo.com/tm-580-woox-travel
                   </tr>
                 </thead>
                 <tbody>
+
+                <?php $i = 1; if (isset($cartItems)) {
+                foreach ($cartItems as $cartItem) {?>
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Ground A</td>
-                    <td>150.000</td>
-                    <td>2</td>
-                    <td>20/08/2023</td>
-                    <td>21/08/2023</td>
+                    <th scope="row"><?= $i ?></th>
+                    <td><?= $cartItem['ground_name'] ?></td>
+                    <td><?= $cartItem['ground_price'] ?></td>
+                    <td><?= $cartItem['day'] ?></td>
+                    <td><?= $cartItem['start_date'] ?></td>
+                    <td><?= $cartItem['end_date'] ?></td>
                     <td>
-                      <!-- <span class="btn btn-danger">Hapus
-                      </span> -->
-                      <a href="#" >Delete</a>
+                      <a href="#" class="link-delete-script" data-cart_id="<?= $cartItem['cart_id'] ?>" >Delete</a>
                     </td>
                   </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Ground B</td>
-                    <td>150.000</td>
-                    <td>4</td>
-                    <td>20/08/2023</td>
-                    <td>23/08/2023</td>
-                    <td><i class="bi bi-trash"></i></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Ground C</td>
-                    <td>150.000</td>
-                    <td>3</td>
-                    <td>20/08/2023</td>
-                    <td>22/08/2023</td>
-                    <td><i class="bi bi-trash"></i></td>
-                  </tr>
+
+                    <?php $i++;}} ?>
                 </tbody>
               </table>
               <div class="col-lg-12 d-flex justify-content-center">            
@@ -212,6 +204,27 @@ https://templatemo.com/tm-580-woox-travel
     $(".option").click(function(){
       $(".option").removeClass("active");
       $(this).addClass("active"); 
+    });
+
+    $(document).ready(function() {
+        $('.link-delete-script').on('click', function(e) {
+            const cart_id = $(this).data('cart_id');
+
+            $.ajax({
+                type: "POST",
+                url: "backend/cart-delete.php",
+                data: {
+                    cart_id: cart_id
+                },
+                success: function (response) {
+                    if (response.success){
+                        location.reload();
+                    }else{
+                        alert(response.message);
+                    }
+                }
+            });
+        });
     });
   </script>
 

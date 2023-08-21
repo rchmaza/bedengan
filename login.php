@@ -16,6 +16,7 @@ if (isset($_POST['signIn'])) {
     if ($result->num_rows > 0) {
         $row = mysqli_fetch_assoc($result);
         $_SESSION['user'] = $row['id'];
+        $_SESSION['is_admin'] = $row['is_admin'];
         header("Location: index.php");
     } else {
         echo "<script>alert('ID User atau password Anda salah. Silahkan coba lagi!')</script>";
